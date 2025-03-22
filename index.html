@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Class in Js</title>
+</head>
+
+<body>
+    <center>
+        <h2>Javascript class</h2>
+    
+    <p id="student1" style="background-color: palevioletred;"></p>
+    <p id="student2" style="background-color: purple;"></p>
+    <p id="student3" style="background-color: plum;"></p>
+
+    <script>
+        //creating a class
+        class student {
+            constructor(name, year, grade) {
+                this.name = name;
+                this.year = year;
+                this.grade = grade;
+                
+
+            }
+            //creating age method for class student
+            age() {
+                let date = new Date();
+                return date.getFullYear() - this.year;
+            }
+            //use student class with three objects
+        }
+        student1 = new student("Riley", 2015, 10);
+        document.getElementById("student1").innerHTML = "My name is " + student1.name + ".I was born in " + student1.year + ".And my age is" + student1.age() + " and my grade is " + student1.grade;
+        student2 = new student("Rene", 2016, 9);
+        document.getElementById("student2").innerHTML = "My name is " + student2.name + ".I was born in " + student2.year + ". And my age is " + student2.age() + " and my grade is " + student2.grade;
+        student3 = new student("Sharon", 2014, 11);
+        document.getElementById("student3").innerHTML = "My name is " + student3.name + ".I was born in " + student3.year + ".And my age is " + student3.age() + " and my grade is " + student3.grade;
+
+        class Student {
+                constructor(name, year, grade) {
+                    this.name = name; // Student's name
+                    this.year = year; // Birth year
+                    this.grade = grade; // Grade
+                }
+
+                // Method to calculate age
+                age() {
+                    let currentYear = new Date().getFullYear(); // Get the current year
+                    return currentYear - this.year; // Subtract the birth year from the current year
+                }
+            }
+
+    </script>
+
+    <h2>Simple Inheritance</h2>
+    <p id="details"></p>
+    <script>
+        //Parent object
+        var animal = {
+            type: "Animal",
+            legs: 4
+        };
+        //Child object inherits from parent
+        var dog = Object.create(animal);
+        dog.name = "Buddy";
+        dog.sound = "Bark";
+
+        //Display details
+        var details = "The " + dog.type + " has " + dog.legs + "  legs. " + " It is called " + dog.name + " and it says " + dog.sound + ".";
+        document.getElementById("details").innerHTML = details;
+    </script>
+
+    <h3>Static Methods</h3>
+    <p id="hello"></p>
+    <p id="hi"></p>
+    <p id="welcome"></p>
+    <script>
+        class Student {
+            constructor(name) {
+                this.studentname = name;
+            }
+            static hello() {
+                //static method 
+                return "Hello";
+
+
+            }
+            static welcome(x) {
+                return "Welcome" + x.studentname;
+            }
+            hi() {
+                return "Hi" + this.studentname;
+            }
+        }
+        myname = new Student("Carol");
+        //Call 'hello()' on the class Student and Not on the 'myname' object because 'hello()' is a static method it cannot access object
+        document.getElementById("hello").innerHTML = Student.hello();
+        //Call 'hi()' on the 'myname' object:
+        document.getElementById("hi").innerHTML = myname.hi();
+        //Call 'welcome()' can access the object since parameter is passed
+        document.getElementById("welcome").innerHTML = Student.welcome(myname);
+    </script>
+    
+    
+    </center>
+
+</body>
+
+</html>
+
